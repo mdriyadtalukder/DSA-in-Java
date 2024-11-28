@@ -44,6 +44,19 @@ public class GenericArray<T> implements Iterable<T> {
 
     }
 
+    public int indexOf(Object obj) {
+        for (int i = 0; i < len; i++) {
+            if (arr[i].equals(obj)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public boolean contains(Object obj) {
+        return indexOf(obj) != -1;
+    }
+
     public void add(T elem) {
         if (len + 1 >= capacity) {
             if (capacity == 0) {
@@ -92,19 +105,6 @@ public class GenericArray<T> implements Iterable<T> {
         return false;
     }
 
-    public int indexOf(Object obj) {
-        for (int i = 0; i < len; i++) {
-            if (arr[i].equals(obj)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public boolean contains(Object obj) {
-        return indexOf(obj) != -1;
-    }
-
     @Override
     public java.util.Iterator<T> iterator() {
         return new java.util.Iterator<T>() {
@@ -136,28 +136,29 @@ public class GenericArray<T> implements Iterable<T> {
 
     public static void main(String[] args) {
 
-        GenericArray ar = new GenericArray(2);
+        GenericArray ar = new GenericArray(3); // capacity 3..1,2,3.it means in index 0,1,2
 
-        ar.add("am");
-        ar.add("Jam");
-        ar.add("kk");
-        ar.set(1, "kola"); // odify
+        ar.add("am"); // After this, capacity = 3, len = 1
+        ar.add("Jam"); // After this, capacity = 3, len = 2 //elem add hy niche..jokhn eta jai tokhn
+                       // len=1 thke..tai oi uporer condition meet kre na.
+        ar.add("kk"); // After this, capacity = 6, len = 3
+        ar.set(1, "kola");
         System.out.println(ar.size());
         System.out.println(ar.capacity);
         // ar.clear();
         System.out.println(ar.isEmpty());
         // System.out.println(ar.removeAt(2));
-        // System.out.println(ar.remove(2));
+        // System.out.println(ar.remove("kola"));
+        // System.out.println(ar);
         System.out.println(ar.indexOf("kk"));
         System.out.println(ar.contains("kk"));
         System.out.println(ar.toString());
         System.out.println(ar);
 
-        Iterator<Integer> it1 = ar.iterator();
+        Iterator<String> it1 = ar.iterator();
 
         System.out.println(it1.next());
         System.out.println(it1.hasNext());
-
 
     }
 }
