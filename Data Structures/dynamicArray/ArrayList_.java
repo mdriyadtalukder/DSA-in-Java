@@ -9,7 +9,7 @@ public class ArrayList_ {
 
         ArrayList<Integer> n2 = new ArrayList<Integer>();
 
-        //16 methods
+        // 16 methods
 
         // adding or inserting
         n.add(11);
